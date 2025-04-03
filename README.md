@@ -11,6 +11,12 @@ OrderEase is a Flutter-based application that allows users to place and manage t
 - **Error Handling**: Displays appropriate messages when required fields are not selected.
 - **State Management**: Utilizes `Provider` for managing order data, addresses, dates, and quantities.
 
+## State Management Choice
+This project uses **Provider** for state management due to its simplicity, efficiency, and ease of integration with Flutter’s widget tree. Provider ensures:
+- **Efficient Data Handling**: Only updates necessary widgets when data changes.
+- **Scoped State Management**: Keeps business logic separate from UI components.
+- **Lightweight & Performant**: No unnecessary rebuilds, leading to a smoother user experience.
+
 ## Setup and Installation
 ### Prerequisites
 - Flutter SDK installed
@@ -48,41 +54,6 @@ OrderEase is a Flutter-based application that allows users to place and manage t
 3. **Configured `l10n.yaml`**
 4. **Integrated Localization in `main.dart`**
 5. **Used Localized Strings in Widgets**
-
-/orderease
-│── components/
-│   │── delivery_address_widget.dart
-│   │── delivery_date_widget.dart
-│   │── delivery_instruction_widget.dart
-│   │── order_summary_widget.dart
-│   │── product_display_widget.dart
-│   │── quantity_selector_widget.dart
-│   │── submit_button.dart
-│
-│── l10n/
-│   │── app_en.arb
-│   │── app_hi.arb
-│
-│── providers/
-│   │── address_provider.dart
-│   │── date_provider.dart
-│   │── instruction_provider.dart
-│   │── language_controller.dart
-│   │── product_provider.dart
-│   │── quantity_provider.dart
-│
-│── screens/
-│   │── new_order_screen.dart
-│   │── go_back_screen.dart
-│
-│── theme/
-│   │── theme.dart
-│
-│── utils/
-│   │── error_popup.dart
-│   │── snackbar_utils.dart
-│
-│── main.dart
 
 ## Screenshots
 ![New Order Screen](assets/screenshots/)
