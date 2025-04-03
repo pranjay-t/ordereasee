@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:orderease/Theme/theme.dart';
 import 'package:orderease/providers/quantity_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuantitySelectorWidget extends StatelessWidget {
   const QuantitySelectorWidget({super.key});
@@ -13,7 +14,7 @@ class QuantitySelectorWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Quantity (per kg): ',
+          '${AppLocalizations.of(context)!.quantity} ${AppLocalizations.of(context)!.perkg}: ', //need to update
           style: Theme.of(context).textTheme.titleMedium,
         ),
         SizedBox(
@@ -33,8 +34,12 @@ class QuantitySelectorWidget extends StatelessWidget {
                   },
                   textDirection: TextDirection.rtl,
                   decoration: InputDecoration(
-                      hintText: 'Quantity',
-                      hintTextDirection: TextDirection.rtl),
+                    hintText: AppLocalizations.of(context)!.quantity,
+                    hintTextDirection: TextDirection.rtl,
+                    border: Theme.of(context).inputDecorationTheme.border,
+                    focusedBorder:
+                        Theme.of(context).inputDecorationTheme.focusedBorder,
+                  ),
                   keyboardType: TextInputType.number,
                 ),
               ),
@@ -46,6 +51,7 @@ class QuantitySelectorWidget extends StatelessWidget {
                     width: 80,
                     child: ElevatedButton(
                       onPressed: quantityProvider.decrement,
+                      style: Theme.of(context).elevatedButtonTheme.style,
                       child: const Icon(Icons.remove),
                     ),
                   ),

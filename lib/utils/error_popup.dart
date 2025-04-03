@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ErrorPopup {
   static void show(BuildContext context, String errorMessage) {
@@ -12,7 +14,7 @@ class ErrorPopup {
             children: [
               Icon(Icons.error_outline, color: Colors.red, size: 28),
               const SizedBox(width: 8),
-              const Text("Error", style: TextStyle(color: Colors.red)),
+               Text(AppLocalizations.of(context)!.error, style: TextStyle(color: Colors.red)),
             ],
           ),
           content: Text(
@@ -24,7 +26,7 @@ class ErrorPopup {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text("OK", style: TextStyle(color: Colors.red)),
+              child:  Text(AppLocalizations.of(context)!.ok, style: TextStyle(color: Colors.red)),
             ),
           ],
         );

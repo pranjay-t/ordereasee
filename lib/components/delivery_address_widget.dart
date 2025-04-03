@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orderease/providers/address_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DeliveryAddressWidget extends StatelessWidget {
   const DeliveryAddressWidget({super.key});
@@ -8,12 +9,12 @@ class DeliveryAddressWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final addressProvider = Provider.of<AddressProvider>(context);
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 120,
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: 40,
             child: GestureDetector(
               onTap: () {
@@ -21,15 +22,20 @@ class DeliveryAddressWidget extends StatelessWidget {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: const Text("Add New Address"),
-                      content: const Text(
-                          "This is a placeholder for adding a new address."),
+                      title: Text(
+                        AppLocalizations.of(context)!.addNewAddress,
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      content: Text(
+                        AppLocalizations.of(context)!.addressPlaceholder,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
                       actions: [
                         TextButton(
                           onPressed: () {
-                            Navigator.of(context).pop(); // Close the dialog
+                            Navigator.of(context).pop();
                           },
-                          child: const Text("Close"),
+                          child: Text(AppLocalizations.of(context)!.close),
                         ),
                       ],
                     );
@@ -43,7 +49,6 @@ class DeliveryAddressWidget extends StatelessWidget {
                 child: Center(
                   child: Icon(
                     Icons.add,
-                    // size: 50,
                     color: Colors.black,
                   ),
                 ),
@@ -60,7 +65,7 @@ class DeliveryAddressWidget extends StatelessWidget {
                   onTap: () {
                     addressProvider.pickAddress(index);
                   },
-                  child: Container(
+                  child: SizedBox(
                     width: 200,
                     child: Card(
                       shape: OutlineInputBorder(

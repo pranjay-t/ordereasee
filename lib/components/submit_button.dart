@@ -5,6 +5,7 @@ import 'package:orderease/screens/go_back_screen.dart';
 import 'package:orderease/utils/error_popup.dart';
 import 'package:orderease/utils/snackbar_utils.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SubmitButton extends StatelessWidget {
   const SubmitButton({super.key});
@@ -18,10 +19,11 @@ class SubmitButton extends StatelessWidget {
       child: ElevatedButton(
           onPressed: () {
             if (quantityProvider.quantity <= 0) {
-              ErrorPopup.show(context,
-                  'You haven\'t selected any items! Please add at least one item to proceed.');
+              ErrorPopup.show(
+                  context, AppLocalizations.of(context)!.noItemsSelected);
             } else {
-              SnackbarUtils.showSuccess(context, "Order placed successfully!");
+              SnackbarUtils.showSuccess(
+                  context, AppLocalizations.of(context)!.orderPlacedSuccess);
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -29,11 +31,11 @@ class SubmitButton extends StatelessWidget {
             }
           },
           child: Text(
-            'Place Order',
-            style: TextStyle(
-                color: backgroundColor,
-                fontSize: 18,
-                fontWeight: FontWeight.w700),
+            AppLocalizations.of(context)!.placeOrder,
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(color: backgroundColor),
           )),
     );
   }

@@ -5,6 +5,7 @@ import 'package:orderease/providers/date_provider.dart';
 import 'package:orderease/providers/product_provider.dart';
 import 'package:orderease/providers/quantity_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrderSummaryWidget extends StatelessWidget {
   const OrderSummaryWidget({super.key});
@@ -44,7 +45,7 @@ class OrderSummaryWidget extends StatelessWidget {
                       width: 5,
                     ),
                     Text(
-                      '${quantityProvider.quantity} Items',
+                      '${quantityProvider.quantity} ${AppLocalizations.of(context)!.items}',
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: 20,
@@ -64,12 +65,8 @@ class OrderSummaryWidget extends StatelessWidget {
                       width: 5,
                     ),
                     Text(
-                      '| ${DateFormat('d MMM').format(dateProvider.selectedDate)}',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
+                        '| ${DateFormat('d MMM').format(dateProvider.selectedDate)}',
+                        style: Theme.of(context).textTheme.bodyLarge!),
                   ],
                 )
               ],
@@ -82,7 +79,7 @@ class OrderSummaryWidget extends StatelessWidget {
               ),
             ),
             Text(
-              'Delivery to:',
+              '${AppLocalizations.of(context)!.deliveryTo}:',
               style: TextStyle(
                   color: Colors.grey,
                   fontSize: 16,
@@ -91,7 +88,7 @@ class OrderSummaryWidget extends StatelessWidget {
             SizedBox(
               height: 8,
             ),
-            Container(
+            SizedBox(
               width: mobileWidth * 0.6,
               child: Text(
                 addressProvider.addresses[addressProvider.pickedAddressIndex],
@@ -111,63 +108,54 @@ class OrderSummaryWidget extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      'Qty',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
+                      AppLocalizations.of(context)!.qty,
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(color: Colors.grey),
                     ),
                     SizedBox(
                       height: 8,
                     ),
                     Text(
                       '${quantityProvider.quantity}',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ],
                 ),
                 Column(
                   children: [
                     Text(
-                      'Item',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
+                      AppLocalizations.of(context)!.items,
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(color: Colors.grey),
                     ),
                     SizedBox(
                       height: 8,
                     ),
                     Text(
                       productProvider.productName,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ],
                 ),
                 Column(
                   children: [
                     Text(
-                      'Price',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
+                      AppLocalizations.of(context)!.price,
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(color: Colors.grey),
                     ),
                     SizedBox(
                       height: 8,
                     ),
                     Text(
                       '${quantityProvider.quantity * productProvider.productPrice}',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ],
                 ),

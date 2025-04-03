@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
-// Example Theme Data - Adjust Colors and Fonts as needed
 const Color primaryColor = Colors.blue;
-// Crystal Ice Blue
 const Color accentColor = Colors.lightBlueAccent;
 const Color backgroundColor = Colors.white;
 const Color textColor = Colors.black87;
 const Color buttonTextColor = Colors.white;
+const Color dullColor = Colors.grey;
 const Color errorColor = Colors.redAccent;
 
 final ThemeData crystalIceTheme = ThemeData(
   primarySwatch: Colors.blue,
-// Generates shades from primaryColor
   colorScheme: ColorScheme.light(
     primary: primaryColor,
     secondary: accentColor,
@@ -33,17 +31,20 @@ final ThemeData crystalIceTheme = ThemeData(
         color: buttonTextColor, fontSize: 20, fontWeight: FontWeight.w500),
   ),
   textTheme: const TextTheme(
-// Define specific text styles if needed
+    headlineMedium:
+        TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: textColor),
     titleLarge:
         TextStyle(color: textColor, fontSize: 30, fontWeight: FontWeight.bold),
     bodyMedium: TextStyle(color: textColor, fontSize: 14),
+    bodyLarge:
+        TextStyle(color: textColor, fontSize: 20, fontWeight: FontWeight.bold),
+
     headlineSmall:
         TextStyle(color: textColor, fontSize: 24, fontWeight: FontWeight.bold),
     titleMedium:
         TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.w500),
     labelLarge:
         TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.bold),
-//
   ),
   buttonTheme: ButtonThemeData(
     buttonColor: primaryColor,
@@ -54,7 +55,6 @@ final ThemeData crystalIceTheme = ThemeData(
     style: ElevatedButton.styleFrom(
         foregroundColor: buttonTextColor,
         backgroundColor: primaryColor,
-        // Text color, Background
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -62,6 +62,7 @@ final ThemeData crystalIceTheme = ThemeData(
         iconSize: 24),
   ),
   inputDecorationTheme: InputDecorationTheme(
+    hintStyle: TextStyle(color: dullColor, fontWeight: FontWeight.w500),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
       borderSide: BorderSide(color: primaryColor.withOpacity(0.5)),
@@ -72,23 +73,17 @@ final ThemeData crystalIceTheme = ThemeData(
     ),
     labelStyle: const TextStyle(color: textColor),
   ),
-// Add other theme properties as needed (cardTheme, iconTheme, etc.)
   cardTheme: CardTheme(
     color: backgroundColor,
     shadowColor: Colors.black26,
     elevation: 4,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12),
-      // side: BorderSide(color: primaryColor.withOpacity(0.2)),
+      side: BorderSide(color: dullColor.withOpacity(0.2)),
     ),
   ),
   iconTheme: const IconThemeData(
-    color: buttonTextColor, // Default icon color
-    size: 24, // Default size
+    color: buttonTextColor,
+    size: 24, 
   ),
 );
-// Example Localized Strings Setup (Guide for interns)
-// 1. Add dependencies: flutter_localizations, intl
-// 2. Create l10n.yaml file
-// 3. Create arb files (e.g., lib/l10n/app_en.arb, lib/l10n/app_hi.arb)
-// 4. Use AppLocalizations.of(context)!.yourStringKey in widgets

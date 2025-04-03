@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orderease/Theme/theme.dart';
 import 'package:orderease/screens/new_order_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GoBackScreen extends StatelessWidget {
   const GoBackScreen({super.key});
@@ -17,7 +18,7 @@ class GoBackScreen extends StatelessWidget {
                       builder: (context) => const NewOrderScreen()));
             },
             child: Text(
-              'Restart',
+              AppLocalizations.of(context)!.restart,
               style: TextStyle(
                   color: backgroundColor,
                   fontSize: 18,

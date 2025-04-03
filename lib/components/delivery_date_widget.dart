@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:orderease/Theme/theme.dart';
 import 'package:orderease/providers/date_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DeliveryDateWidget extends StatelessWidget {
   const DeliveryDateWidget({super.key});
@@ -24,11 +24,7 @@ class DeliveryDateWidget extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              "Pick Delivery Date: ${DateFormat('EEE, MMM d').format(dateProvider.selectedDate)}",
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+              "${AppLocalizations.of(context)!.pickDeliveryDate}: ${DateFormat('EEE, MMM d').format(dateProvider.selectedDate)}",
             ),
           ],
         ),

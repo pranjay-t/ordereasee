@@ -7,8 +7,8 @@ class ProductProvider extends ChangeNotifier{
       'assets/images/ice_cubes_2.png'
     ];
   
-  String _productName = 'Ice Cubes (1kg)';
-  int _productPrice = 199;
+  final String _productName = 'Ice Cubes (1kg)';
+  final int _productPrice = 199;
 
   int get activePage => _activePage;  
   List<String> get productImages => _productImages;
