@@ -34,13 +34,15 @@ final ThemeData crystalIceTheme = ThemeData(
   ),
   textTheme: const TextTheme(
 // Define specific text styles if needed
+    titleLarge:
+        TextStyle(color: textColor, fontSize: 30, fontWeight: FontWeight.bold),
     bodyMedium: TextStyle(color: textColor, fontSize: 14),
     headlineSmall:
         TextStyle(color: textColor, fontSize: 24, fontWeight: FontWeight.bold),
     titleMedium:
         TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.w500),
-    labelLarge: TextStyle(
-        color: buttonTextColor, fontSize: 16, fontWeight: FontWeight.bold),
+    labelLarge:
+        TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.bold),
 //
   ),
   buttonTheme: ButtonThemeData(
@@ -50,15 +52,14 @@ final ThemeData crystalIceTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      foregroundColor: buttonTextColor,
-      backgroundColor: primaryColor,
-      // Text color, Background
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-      iconColor: buttonTextColor,
-      iconSize: 24
-    ),
+        foregroundColor: buttonTextColor,
+        backgroundColor: primaryColor,
+        // Text color, Background
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        iconColor: buttonTextColor,
+        iconSize: 24),
   ),
   inputDecorationTheme: InputDecorationTheme(
     border: OutlineInputBorder(
@@ -75,7 +76,7 @@ final ThemeData crystalIceTheme = ThemeData(
   cardTheme: CardTheme(
     color: backgroundColor,
     shadowColor: Colors.black26,
-    elevation: 2,
+    elevation: 4,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12),
       // side: BorderSide(color: primaryColor.withOpacity(0.2)),

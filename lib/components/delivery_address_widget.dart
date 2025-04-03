@@ -15,20 +15,41 @@ class DeliveryAddressWidget extends StatelessWidget {
         children: [
           Container(
             width: 40,
-            child: Card(
-              shape: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Center(
-                child: Icon(
-                  Icons.add,
-                  // size: 50,
-                  color: Colors.black,
+            child: GestureDetector(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text("Add New Address"),
+                      content: const Text(
+                          "This is a placeholder for adding a new address."),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(); // Close the dialog
+                          },
+                          child: const Text("Close"),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: Card(
+                shape: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Center(
+                  child: Icon(
+                    Icons.add,
+                    // size: 50,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),
           ),
-
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -36,7 +57,7 @@ class DeliveryAddressWidget extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 final address = addressProvider.addresses[index];
                 return GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     addressProvider.pickAddress(index);
                   },
                   child: Container(
@@ -55,11 +76,11 @@ class DeliveryAddressWidget extends StatelessWidget {
                               address,
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
-                          if(addressProvider.pickedAddressIndex == index)
-                            Icon(
-                              Icons.check_circle,
-                              color: Colors.green,
-                            )
+                            if (addressProvider.pickedAddressIndex == index)
+                              Icon(
+                                Icons.check_circle,
+                                color: Colors.green,
+                              )
                           ],
                         ),
                       ),

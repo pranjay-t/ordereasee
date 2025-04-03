@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:orderease/Theme/theme.dart';
+import 'package:orderease/providers/product_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductDisplayWidget extends StatefulWidget {
@@ -12,26 +14,22 @@ class ProductDisplayWidget extends StatefulWidget {
 }
 
 class _ProductDisplayWidgetState extends State<ProductDisplayWidget> {
-  int activePage = 0;
-  final productImages = [
-      'assets/images/ice_cubes_1.png',
-      'assets/images/ice_cubes_2.png'
-    ];
   @override
   Widget build(BuildContext context) {
+    final productProvider = Provider.of<ProductProvider>(context);
     return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               width: double.infinity,
               height: 400,
               child: LayoutBuilder(builder: (context, constraints) {
                 return Stack(
                   children: [
                     CarouselSlider.builder(
-                      itemCount: productImages.length,
+                      itemCount: productProvider.productImages.length,
                       itemBuilder: (context, index, realIndex) {
-                        final image = productImages[index];
+                        final image = productProvider.productImages[index];
                         return Image.asset(
                           image,
                         );
@@ -44,16 +42,14 @@ class _ProductDisplayWidgetState extends State<ProductDisplayWidget> {
                           viewportFraction: 1.1,
                           enlargeCenterPage: false,
                           onPageChanged: (index, reason) {
-                            setState(() {
-                              activePage = index;
-                            });
+                          productProvider.onPageChanged(index);
                           }),
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: AnimatedSmoothIndicator(
-                        activeIndex: activePage,
-                        count: productImages.length,
+                        activeIndex: productProvider.activePage,
+                        count: productProvider.productImages.length,
                         effect: ExpandingDotsEffect(
                           dotWidth: 10,
                           dotHeight: 10,
@@ -68,11 +64,11 @@ class _ProductDisplayWidgetState extends State<ProductDisplayWidget> {
               height: 10,
             ),
             Text(
-              'Ice Cubes (1kg)',
+              productProvider.productName,
               style: crystalIceTheme.textTheme.headlineSmall,
             ),
             Text(
-              '₹200',
+              '₹${productProvider.productPrice}',
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,

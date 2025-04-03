@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:orderease/providers/address_provider.dart';
 import 'package:orderease/providers/date_provider.dart';
 import 'package:orderease/providers/instruction_provider.dart';
+import 'package:orderease/providers/product_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:orderease/providers/quantity_provider.dart';
 import 'package:orderease/screens/new_order_screen.dart';
@@ -11,6 +12,9 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (context) => ProductProvider(),
+        ),
         ChangeNotifierProvider(
           create: (context) => QuantityProvider(),
         ),

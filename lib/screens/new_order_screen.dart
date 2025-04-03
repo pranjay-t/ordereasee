@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:orderease/components/delivery_address_widget.dart';
 import 'package:orderease/components/delivery_date_widget.dart';
 import 'package:orderease/components/delivery_instruction_widget.dart';
+import 'package:orderease/components/language_toggle.dart';
+import 'package:orderease/components/order_summary_widget.dart';
 import 'package:orderease/components/product_display_widget.dart';
 import 'package:orderease/components/quantity_selector_widget.dart';
+import 'package:orderease/components/submit_button.dart';
 
 class NewOrderScreen extends StatefulWidget {
   const NewOrderScreen({super.key});
@@ -24,6 +27,21 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
       appBar: AppBar(
         title: Text('New Order Screen'),
         leading: Icon(Icons.arrow_back_ios_new),
+        actions: [
+          // LanguageToggle(),
+          PopupMenuButton<String>(
+            onSelected: (String language) {
+              if (language == 'English') {
+              } else {
+              }
+            },
+            itemBuilder: (context) => [
+              PopupMenuItem(value: 'English', child: Text('🇬🇧 English')),
+              PopupMenuItem(value: 'Hindi', child: Text('🇮🇳 हिंदी')),
+            ],
+            icon: Icon(Icons.language),
+          ),
+          ],
       ),
       body: Container(
         width: mobileWidth,
@@ -71,6 +89,21 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
                 height: 5,
               ),
               DeliveryInstructionWidget(),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Order Summary: ',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              OrderSummaryWidget(),
+              SizedBox(
+                height: 10,
+              ),
+              SubmitButton(),
             ],
           ),
         ),
