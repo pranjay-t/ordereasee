@@ -1,16 +1,62 @@
-# orderease
+# OrderEase - New Order Screen
 
-A new Flutter project.
+## Overview
+OrderEase is a Flutter-based application that allows users to place and manage their orders efficiently. This project focuses on implementing the **New Order Screen** with full localization support for **English (EN)** and **Hindi (HI)** using `flutter_localizations` and `.arb` files.
 
-## Getting Started
+## Features
+- **Multi-language Support**: Localized all user-facing strings for English and Hindi.
+- **Real-time Order Summary**: Displays item name, quantity, price, selected address, and delivery date.
+- **Delivery Address Selection**: Allows users to pick from saved addresses or add a new one.
+- **Delivery Date Selection**: Users can specify their preferred delivery date.
+- **Error Handling**: Displays appropriate messages when required fields are not selected.
+- **State Management**: Utilizes `Provider` for managing order data, addresses, dates, and quantities.
 
-This project is a starting point for a Flutter application.
+## Setup and Installation
+### Prerequisites
+- Flutter SDK installed
+- Dart environment set up
+- Dependencies installed via `pub get`
 
-A few resources to get you started if this is your first Flutter project:
+### Installation Steps
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/pranjay-t/ordereasee.git
+   cd OrderEase
+   ```
+2. Install dependencies:
+   ```sh
+   flutter pub get
+   ```
+3. Run the app:
+   ```sh
+   flutter run
+   ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Localization Implementation
+1. **Added Dependencies**
+   ```yaml
+   dependencies:
+     flutter:
+       sdk: flutter
+     flutter_localizations:
+       sdk: flutter
+     intl: any
+   ```
+2. **Created `.arb` Files**
+   - `lib/l10n/app_en.arb`
+   - `lib/l10n/app_hi.arb`
+3. **Configured `l10n.yaml`**
+4. **Integrated Localization in `main.dart`**
+5. **Used Localized Strings in Widgets**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+![New Order Screen](assets/screenshots/new_order.png)
+
+## Future Enhancements
+- Add more language support.
+- Implement user authentication.
+- Improve UI/UX.
+
+## License
+This project is licensed under the MIT License.
+
