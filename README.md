@@ -50,7 +50,7 @@ OrderEase is a Flutter-based application that allows users to place and manage t
 5. **Used Localized Strings in Widgets**
 
 ## Screenshots
-![New Order Screen](assets/screenshots/new_order.png)
+![New Order Screen](assets/screenshots/)
 
 ## Future Enhancements
 - Add more language support.
